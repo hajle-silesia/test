@@ -1,0 +1,25 @@
+name: Test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Step a
+        run: |
+          echo "A"
+      - name: Step b
+        if: false
+        run: |
+          echo "B"
+      - name: Step c
+        run: |
+          echo "C"
