@@ -9,6 +9,8 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
+    outputs:
+      flag: ${{ steps.set-flag.outputs.flag }}
 
     steps:
       - uses: actions/checkout@v4
@@ -23,3 +25,7 @@ jobs:
       - name: Step c
         run: |
           echo "C"
+      - name: Set flag
+        id: set-flag
+        run: |
+          echo "flag=true" >> $GITHUB_OUTPUT
