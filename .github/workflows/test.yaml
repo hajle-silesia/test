@@ -29,4 +29,4 @@ jobs:
           token: ${{ secrets.PUSH_TOKEN }}
           repository: hajle-silesia/test
           event-type: test
-          flag: true
+          client-payload: true
