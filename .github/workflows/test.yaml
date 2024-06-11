@@ -9,8 +9,6 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
-    outputs:
-      flag: ${{ steps.set-flag.outputs.flag }}
 
     steps:
       - uses: actions/checkout@v4
@@ -26,6 +24,8 @@ jobs:
         run: |
           echo "C"
       - name: Set flag
-        id: set-flag
-        run: |
-          echo "flag=true" >> $GITHUB_OUTPUT
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.PUSH_TOKEN }}
+          repository: hajle-silesia/test
+          event-type: test
