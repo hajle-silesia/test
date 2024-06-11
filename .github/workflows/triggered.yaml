@@ -1,13 +1,9 @@
 name: Triggered
 
 on:
-  workflow_run:
-    workflows:
-      - Test name
+  repository_dispatch:
     types:
-      - completed
-    branches:
-      - main
+      - test
   workflow_dispatch:
 
 permissions:
@@ -16,7 +12,7 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
-    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.jobs.test.outputs.flag == 'true'
+    if: github.event.name == 'repository_dispatch' && github.event.flag == 'true'
 
     steps:
       - uses: actions/checkout@v4
