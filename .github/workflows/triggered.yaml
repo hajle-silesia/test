@@ -12,7 +12,7 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
-    if: github.event.name == 'repository_dispatch' && github.event.flag == 'true'
+    if: github.event.name == 'repository_dispatch'
 
     steps:
       - uses: actions/checkout@v4
