@@ -3,7 +3,7 @@ name: Triggered
 on:
   workflow_run:
     workflows:
-      - Test
+      - Test name
     types:
       - completed
     branches:
